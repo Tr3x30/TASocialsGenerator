@@ -1,0 +1,12 @@
+# Normalise line endings in the repository, LF in the working tree.
+* text=auto eol=lf
+
+# These run under bash on Linux. A CRLF checkout would break them with
+# "$'\r': command not found", which is invisible until a deploy fails.
+*.sh text eol=lf
+
+# Large artwork and binaries: no line-ending conversion and no textual diff.
+# template.svg is 3.5 MB of embedded base64; diffing it is noise.
+*.svg -text -diff
+*.png binary
+*.ico binary
